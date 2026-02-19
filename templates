@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Emotion Detection App</h2>
+
+<form action="/detect" method="POST">
+    <textarea name="text" placeholder="Enter text here..." required></textarea>
+    <button type="submit">Analyze Emotion</button>
+</form>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+{% if result %}
+<h3>Emotion Scores</h3>
+<ul>
+    <li>Anger: {{ result.anger }}</li>
+    <li>Disgust: {{ result.disgust }}</li>
+    <li>Fear: {{ result.fear }}</li>
+    <li>Joy: {{ result.joy }}</li>
+    <li>Sadness: {{ result.sadness }}</li>
+</ul>
+<h3>Dominant Emotion: {{ result.dominant_emotion }}</h3>
+{% endif %}
+
+</body>
+</html>
