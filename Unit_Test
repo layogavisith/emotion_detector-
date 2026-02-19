@@ -1,0 +1,19 @@
+import unittest
+from emotion_detector import emotion_detector
+
+class TestEmotionDetector(unittest.TestCase):
+
+    def test_empty_input(self):
+        result = emotion_detector("")
+        self.assertIn("error", result)
+
+    def test_valid_text(self):
+        result = emotion_detector("I am very happy today!")
+        self.assertIn("joy", result)
+
+    def test_dominant_key(self):
+        result = emotion_detector("I am sad")
+        self.assertIn("dominant_emotion", result)
+
+if __name__ == "__main__":
+    unittest.main()
